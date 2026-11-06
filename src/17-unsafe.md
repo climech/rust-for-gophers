@@ -8,7 +8,7 @@ compiler: calling C, implementing a data structure with raw pointers, or
 talking to hardware. For these there's `unsafe`, which unlocks five extra
 abilities:
 
-1. dereferencing raw pointers (`*const T`, `*mut T`);
+1. de&shy;refer&shy;enc&shy;ing raw pointers (`*const T`, `*mut T`);
 2. calling `unsafe` functions, including all foreign (C) functions;
 3. accessing or modifying `static mut` variables;
 4. implementing `unsafe` traits (such as `Send`/`Sync` by hand);
@@ -17,7 +17,7 @@ abilities:
 That's all. `unsafe` doesn't switch off the borrow checker or type
 checking. It marks a block where **you** guarantee invariants that the
 compiler can't check, and if you get them wrong the result is undefined
-behaviour.
+behavior.
 
 ```rust
 let x = 42;
@@ -30,7 +30,7 @@ used for similar reasons. The difference is in culture and tooling. In
 Rust, `unsafe` blocks are kept small and commented with a `// SAFETY:` note
 explaining why the invariants hold. They're wrapped in safe APIs, and
 they're checked with **Miri**, an interpreter that detects undefined
-behaviour (`cargo +nightly miri test`).
+behavior (`cargo +nightly miri test`).
 
 ```rust
 /// Returns the element at `i` without bounds checking.

@@ -31,7 +31,7 @@ Prefer the generic version when the store is fixed per binary and only
 swapped in tests. Choose `dyn` when you'd otherwise have generics
 spreading through dozens of types. Note that a trait with `async fn` isn't
 directly dyn-compatible today, hence `DynStore`, whose methods return
-boxed futures. The `async-trait` crate generates that for you.
+boxed futures. The [`async-trait`]{.nobr} crate generates that for you.
 
 ## `context.Context`
 
@@ -98,7 +98,7 @@ crates can derive builders.
 ## Embedding → composition
 
 Rust has no struct embedding and no inheritance. Use plain fields and
-write the delegating methods yourself. Share behaviour through traits with
+write the delegating methods yourself. Share behavior through traits with
 default methods:
 
 ```rust
@@ -118,7 +118,7 @@ gets called.
 ## `any` and type switches
 
 - A closed set of types → an `enum`.
-- "Any type with behaviour X" → generics or `dyn Trait`.
+- "Any type with behavior X" → generics or `dyn Trait`.
 - Truly dynamic data (JSON of unknown shape) → `serde_json::Value`.
 - A heterogeneous registry keyed by type → `HashMap<TypeId, Box<dyn Any>>`.
   This is rare.
@@ -145,9 +145,9 @@ variants. `Level::Warn as u8` gives you the discriminant.
 
 ## `init()` and package state
 
-Rust has no `init()` and no code runs before `main`. Initialise state
+Rust has no `init()` and no code runs before `main`. Initialize state
 explicitly in `main` and pass it down, or use `LazyLock` for lazily built
-globals (Chapter 13). It's more explicit, and the initialisation order
+globals (Chapter 13). It's more explicit, and the initialization order
 can't surprise you.
 
 ## Worker pools
@@ -195,13 +195,13 @@ let results: Vec<_> = stream::iter(urls)
 2. **Putting references in long-lived structs.** Own the data instead.
 3. **Writing `Arc<Mutex<…>>` around everything.** Start with clear
    ownership and pass `&mut`. Share only what really needs to be shared.
-4. **Modelling OOP hierarchies with traits.** Reach for enums first.
+4. **Modeling OOP hierarchies with traits.** Reach for enums first.
 5. **Calling `unwrap()` everywhere in library code.** Propagate with `?`
    and use `expect("why this can't fail")` for invariants.
 6. **Blocking inside async code.** Use `spawn_blocking`.
 7. **Fighting the borrow checker with `unsafe`.** Don't.
 8. **Taking `clone()` as defeat.** Cloning a small `String` at a
-   boundary is fine. Profile before you optimise.
+   boundary is fine. Profile before you optimize.
 9. **Ignoring Clippy.** Run `cargo clippy` often. It teaches idioms.
 
 ## Where to go next

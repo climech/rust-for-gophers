@@ -23,7 +23,7 @@ hundred bytes, and a single allocation.
 What you give up is uniformity. Async functions can only be awaited from
 other async code, a blocking call inside async code stalls the executor
 thread, and there are extra concepts to learn: `Future`, `Send` bounds,
-`Pin`. This is the "function colouring" problem. Go doesn't have it; Rust
+`Pin`. This is the "function coloring" problem. Go doesn't have it; Rust
 does.
 
 ## Hello, Tokio
@@ -103,7 +103,7 @@ let (user, orders) = tokio::join!(get_user(id), get_orders(id));
 // Same, but stop at the first error
 let (user, orders) = tokio::try_join!(get_user(id), get_orders(id))?;
 
-// Race: first one wins, the others are DROPPED (cancelled)
+// Race: first one wins, the others are DROPPED (canceled)
 tokio::select! {
     res = fetch_primary() => handle(res),
     res = fetch_replica() => handle(res),
@@ -150,12 +150,12 @@ match timeout(Duration::from_secs(5), fetch_report()).await {
 ```
 
 No `ctx` parameter is needed. The losing branches of a `select!`, an
-aborted `JoinHandle`, and a dropped `JoinSet` are all cancelled the same
+aborted `JoinHandle`, and a dropped `JoinSet` are all canceled the same
 way.
 
 ::: warn
 Cancellation can happen at **any** `.await`. If a function does
-`let x = read_header().await; let y = read_body().await;` and is cancelled
+`let x = read_header().await; let y = read_body().await;` and is canceled
 between the two awaits, the header is consumed and lost. This is called
 **cancellation safety**, and it matters most in `select!` loops, where a
 branch's future is dropped every time another branch wins. Tokio's docs
@@ -164,7 +164,7 @@ shutdown, use `tokio_util::sync::CancellationToken`, which is the closest
 thing to `context.WithCancel`.
 :::
 
-A spawned task is **not** cancelled when its `JoinHandle` is dropped. It
+A spawned task is **not** canceled when its `JoinHandle` is dropped. It
 keeps running detached, like a goroutine. Call `handle.abort()` to cancel
 it.
 
@@ -304,12 +304,12 @@ socket into the task, and `Drop` takes the place of `defer conn.Close()`.
 
 - **Async functions in traits** work natively (since Rust 1.75). If the
   resulting futures must be `Send` for use with `dyn Trait` or across
-  spawns, the `async-trait` or `trait-variant` crates help.
+  spawns, the [`async-trait`]{.nobr} or [`trait-variant`]{.nobr} crates help.
 - **Async closures**, `async || { … }`, are stable since 1.85.
 - **`Pin`** appears because a state machine may contain references into
   itself, so it must not move in memory once polled. `Box::pin(fut)` and
-  the `pin!` macro handle this. You'll see `Pin<Box<dyn Future<Output = T>
-  + Send>>`, the type-erased future, in trait objects and recursive async
+  the `pin!` macro handle this. You'll see
+  `Pin<Box<dyn Future<Output = T> + Send>>`, the type-erased future, in trait objects and recursive async
   functions.
 - **Streams** (`futures::Stream`, `tokio_stream`) are async iterators. Use
   `while let Some(x) = stream.next().await`.
@@ -319,14 +319,14 @@ socket into the task, and `Drop` takes the place of `defer conn.Close()`.
 - **Async** for I/O-bound work with many concurrent operations: servers,
   clients, proxies, anything that would have thousands of goroutines in Go.
 - **Threads** (plus Rayon) for CPU-bound work, or for a handful of
-  long-running workers. Sync code is simpler: no colouring, no `Send`
+  [long-running]{.nobr} workers. Sync code is simpler: no coloring, no `Send`
   puzzles.
 - Mixing them is normal: an async server that offloads hashing to
   `spawn_blocking` or to a Rayon pool.
 
 ::: go
 The biggest mental shift is that **there is no runtime unless you bring
-one**, and its behaviour, such as blocking, task placement or cancellation,
+one**, and its behavior, such as blocking, task placement or cancellation,
 is library code you can read and configure. Once you accept that futures
 are lazy values and that dropping a future cancels it, most of the
 remaining surprises in async Rust follow from those two facts.

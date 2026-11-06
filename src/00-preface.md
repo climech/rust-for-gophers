@@ -18,7 +18,7 @@ built-in test runner. They also make opposite bets in one important area:
 - **Rust** puts correctness and control first. There is no garbage collector
   and no hidden runtime. Ownership of memory is tracked by the compiler, and
   the type system is expressive enough to rule out entire classes of bugs:
-  use-after-free, data races, null dereferences, forgotten error checks.
+  use-after-free, data races, null de&shy;refer&shy;ences, forgotten error checks.
   The cost is a steeper learning curve and a compiler that argues with you.
 
 Most of your effort will go into that argument with the compiler. The goal of
@@ -26,7 +26,7 @@ this book is to get you through it quickly, by explaining the *model* the
 compiler is enforcing, so that its error messages turn into hints rather than
 obstacles.
 
-## How this book is organised {-}
+## How this book is organized {-}
 
 Chapters 1–2 cover tooling and basic syntax, quickly. Chapters 3–5 cover
 ownership, borrowing and lifetimes. This is the core of the language and the
@@ -44,7 +44,7 @@ standard library to the Rust crates you'll use instead.
 
 ## Conventions {-}
 
-Code blocks are labelled **Go** or **Rust** in the corner, so you can tell
+Code blocks are labeled **Go** or **Rust** in the corner, so you can tell
 them apart at a glance. Boxes titled *Coming from Go* point out where your
 Go intuition will help or mislead you. Boxes titled *Watch out* flag common
 traps.

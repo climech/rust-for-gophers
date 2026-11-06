@@ -37,7 +37,7 @@ choice.
 | gob / protobuf / gRPC    | `bincode`, `prost`, `tonic`                    |
 | `text/template`, `html/template` | `askama`, `minijinja`, `tera`          |
 | `regexp`                 | `regex`                                        |
-| `crypto/*`               | `rustls`, `ring`, `aws-lc-rs`, RustCrypto crates (`sha2`, `aes-gcm`, …) |
+| `crypto/*`               | `rustls`, `ring`, `aws-lc-rs`, RustCrypto crates (`sha2`, [`aes-gcm`]{.nobr}, …) |
 | `crypto/rand`, `math/rand` | `rand`, `getrandom`                          |
 | `math/big`               | `num-bigint`, `rug`                            |
 | `database/sql`           | `sqlx`, `diesel`, `tokio-postgres`, `rusqlite` |

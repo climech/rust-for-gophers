@@ -76,7 +76,7 @@ Most signatures need no annotations because of three **elision rules**:
 So `fn trim(s: &str) -> &str` is shorthand for
 `fn trim<'a>(s: &'a str) -> &'a str`, and a method like
 `fn name(&self) -> &str` returns something borrowed from `self`. You only
-write lifetimes when the rules can't decide, which typically means several
+write lifetimes when the rules can't decide, which typi&shy;cally means several
 reference inputs and a reference output, or a struct that holds a
 reference.
 

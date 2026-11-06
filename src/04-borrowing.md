@@ -101,9 +101,9 @@ alive when `push` needs exclusive access.
 
 ## Using references
 
-You create references with `&` and `&mut`, and dereference them with `*`.
-Most of the time dereferencing is automatic. The method-call operator `.`
-dereferences as many times as needed, much as Go lets you call methods
+You create references with `&` and `&mut`, and de&shy;refer&shy;ence them with `*`.
+Most of the time de&shy;refer&shy;enc&shy;ing is automatic. The method-call operator `.`
+de&shy;refer&shy;ences as many times as needed, much as Go lets you call methods
 through a pointer:
 
 ```rust
@@ -264,7 +264,7 @@ Usually you want the struct to own the data instead. See the next chapter.
 
 ::: go
 You might expect the borrow checker to feel like a stricter `go vet`. In
-practice it pushes your design towards data with a single clear owner,
+practice it pushes your design toward data with a single clear owner,
 mutation in few places, and short-lived shared access. These are good
 habits in Go too, especially in concurrent code. Most experienced Rust
 programmers say that after a few months they rarely fight the borrow

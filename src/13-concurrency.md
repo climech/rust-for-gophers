@@ -53,7 +53,7 @@ You almost never implement them. The compiler derives them
 | Type                    | Send | Sync | Why                                  |
 |-------------------------|------|------|--------------------------------------|
 | `Rc<T>`                 | no   | no   | non-atomic reference count           |
-| `Cell<T>`, `RefCell<T>` | yes  | no   | unsynchronised interior mutation     |
+| `Cell<T>`, `RefCell<T>` | yes  | no   | unsynchronized interior mutation     |
 | `MutexGuard<T>`         | no   | yes  | must unlock on the locking thread    |
 | raw pointers            | no   | no   | compiler can't reason about them     |
 | `Arc<T>`                | yes  | yes  | only if `T: Send + Sync`             |
@@ -72,7 +72,7 @@ error[E0277]: `Rc<Vec<i32>>` cannot be sent between threads safely
 Data race freedom in Rust is not a separate feature. It follows directly
 from *aliasing XOR mutability* plus `Send`/`Sync`. A data race needs two
 threads accessing the same memory, at least one of them writing, without
-synchronisation. Ownership rules out unsynchronised shared mutable access
+synchronization. Ownership rules out unsynchronized shared mutable access
 everywhere, and threads are just one more place where the rule applies.
 :::
 
@@ -110,7 +110,7 @@ println!("{}", *count.lock().unwrap()); // 10
 ```
 
 `Arc` provides shared ownership across threads, and `Mutex` provides
-synchronised mutation. Note where the data lives.
+synchronized mutation. Note where the data lives.
 
 ### The mutex owns the data
 
@@ -136,7 +136,7 @@ impl Cache {
 
 In Go, a comment tells you that `mu` protects `items`. In Rust, `Mutex<T>`
 **contains** the `T`, and the only way to reach it is `lock()`, which
-returns a guard. The guard dereferences to `&mut T`, and dropping it
+returns a guard. The guard de&shy;refer&shy;ences to `&mut T`, and dropping it
 unlocks the mutex. You can't touch the data without the lock, and you
 can't forget to unlock. Note that `get` takes `&self`. `Mutex` is an
 interior-mutability type (Chapter 11), so many threads can share
@@ -223,7 +223,7 @@ receiver, so the sender can't keep mutating something it has just handed
 off. That's "share memory by communicating" enforced by the type system.
 
 The standard library has no `select`. For thread-based code, the
-`crossbeam-channel` crate provides MPMC channels and a `select!` macro. In
+[`crossbeam-channel`]{.nobr} crate provides MPMC channels and a `select!` macro. In
 async code, Tokio's channels and `tokio::select!` fill this role (next
 chapter).
 

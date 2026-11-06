@@ -118,9 +118,9 @@ on their own. Work happens when a *consumer* pulls items: `collect`,
 `for` loop. Calling `map` and dropping the result does nothing, and the
 compiler warns about it.
 
-**Iterators are zero-cost.** After monomorphisation and inlining, the chain
+**Iterators are zero-cost.** After monomorphization and inlining, the chain
 above compiles to roughly the same loop you'd write by hand, often with
-bounds checks removed and sometimes vectorised. Go's `slices` and `maps`
+bounds checks removed and sometimes vectorized. Go's `slices` and `maps`
 helpers plus range-over-func offer similar ergonomics, but the closures
 aren't always inlined.
 

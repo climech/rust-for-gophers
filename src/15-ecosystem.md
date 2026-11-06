@@ -7,10 +7,10 @@ Everything else comes from crates. That sounds worrying, but a stable core
 set of crates has become the de facto standard library. This chapter tours
 the ones you'll use in nearly every service.
 
-## serde: serialisation
+## serde: serialization
 
 Go uses struct tags and reflection. Rust uses **derive macros** that
-generate serialisation code at compile time, so there's no reflection and
+generate serialization code at compile time, so there's no reflection and
 no runtime cost.
 
 ```go
@@ -186,7 +186,7 @@ macro requires `Option<String>` in `User`. (For offline builds and CI, run
 There's no single standard, but these signals are reliable: download
 counts on crates.io, documentation on docs.rs, the `blessed.rs` and
 `lib.rs` indexes, and whether the crate is maintained by a well-known
-group (tokio-rs, rust-lang, RustCrypto, rustls). Keep an eye on your
+group ([tokio-rs]{.nobr}, [rust-lang]{.nobr}, RustCrypto, rustls). Keep an eye on your
 dependency tree. `cargo tree` and `cargo deny` play the roles of `go mod
 graph` and `govulncheck`, and `cargo audit` checks the RustSec advisory
 database.

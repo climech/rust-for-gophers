@@ -32,10 +32,10 @@ wrapped type. You add what you need, usually through `derive`.
 
 ### No zero values
 
-This is a significant difference. Go initialises every variable to a zero
+This is a significant difference. Go initializes every variable to a zero
 value, so `var u User` is always valid, and "the zero value should be
 useful" is a design goal. **Rust has no zero values.** Every field must be
-initialised explicitly, and reading an uninitialised variable is a compile
+initialized explicitly, and reading an uninitialized variable is a compile
 error.
 
 The upside is that a type can't end up half-constructed. A `User` always

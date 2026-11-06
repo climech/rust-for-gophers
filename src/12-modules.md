@@ -110,7 +110,7 @@ Some differences from Go modules:
   Cargo picks the *newest* compatible version, unlike Go's minimal version
   selection, and records the choice in `Cargo.lock`. Commit `Cargo.lock`
   for applications. For libraries it's optional; current guidance leans
-  towards committing it there too.
+  toward committing it there too.
 - **Different major versions can coexist** in one build (`rand 0.7` and
   `rand 0.8`). Their types are distinct and won't unify, which occasionally
   causes confusing errors. Go handles this through `/v2` import paths.
@@ -238,4 +238,4 @@ pub fn add(a: i32, b: i32) -> i32 { a + b }
 can't define a narrow interface in the test package after the fact. The
 usual approaches are a trait at the seam with a fake implementation in
 tests, generic parameters, or the `mockall` crate. Many Rust codebases
-favour pure functions and integration tests over heavy mocking.
+favor pure functions and integration tests over heavy mocking.

@@ -51,13 +51,14 @@ To check the result visually, render pages with
 - **Pipe characters in tables:** inside inline code in pipe tables, `\|` shows
   a literal backslash. Use raw HTML instead, for example
   `<code>a &#124; b</code>` (and `&amp;` for `&`).
+- **Spelling:** American English (`behavior`, `initialize`, `canceled`).
 - **Prose style:** plain and direct. Short sentences, no filler, no
   over-explaining basics to an experienced programmer.
 
 ## Accuracy
 
 Examples target Rust 2024 edition (Rust 1.85+) and Go 1.23+. Verify claims
-about compiler behaviour by compiling a snippet with `rustc`. That includes
+about compiler behavior by compiling a snippet with `rustc`. That includes
 which code fails, the exact error codes, and when features became stable. Many
 book snippets are deliberate fragments or deliberate compile errors, so don't
 "fix" those.

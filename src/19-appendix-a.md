@@ -57,7 +57,7 @@ Quick translations of common Go constructs. "≈" marks an approximation.
 | `cond ? a : b` (n/a in Go)          | `if cond { a } else { b }`               |
 | `defer f()`                         | `Drop` / scope guard                     |
 | `panic(x)` / `recover()`            | `panic!(..)` / `catch_unwind` (rare)     |
-| `goto`                              | labelled `break` / `continue`            |
+| `goto`                              | labeled `break` / `continue`            |
 
 ### Common operations {-}
 

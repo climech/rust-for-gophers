@@ -196,5 +196,5 @@ them as HTML.
 
 Rust uses `snake_case` for functions, variables and modules, `CamelCase` for
 types and traits, and `SCREAMING_CASE` for constants. Unlike Go,
-capitalisation has **nothing** to do with visibility: items are private
+capitalization has **nothing** to do with visibility: items are private
 unless marked `pub`. rustc will warn if you break these conventions.

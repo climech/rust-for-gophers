@@ -96,6 +96,6 @@ Typefaces:
 The book's text, code examples and build files are released under the
 [MIT License](LICENSE).
 
-The fonts in `fonts/` are not covered by it. They keep their own licence, the
-SIL Open Font License 1.1. The licence text and copyright notice for each
+The fonts in `fonts/` are not covered by it. They keep their own license, the
+SIL Open Font License 1.1. The license text and copyright notice for each
 font are in `fonts/OFL-*.txt`.

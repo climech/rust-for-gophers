@@ -13,7 +13,7 @@ rustup component add clippy rustfmt rust-analyzer
 
 | Go                         | Rust                          |
 |----------------------------|-------------------------------|
-| `go build`                 | `cargo build` (`--release` for optimised) |
+| `go build`                 | `cargo build` (`--release` for optimized) |
 | `go run .`                 | `cargo run`                   |
 | `go test ./...`            | `cargo test`                  |
 | `go vet`, staticcheck      | `cargo clippy`                |
@@ -107,7 +107,7 @@ variable change in Go 1.22.
 
 ## Debug vs release
 
-Debug builds (`cargo build`) are unoptimised and can be 10–50× slower than
+Debug builds (`cargo build`) are unoptimized and can be 10–50× slower than
 release builds, much more than the gap you'd see in Go. Integer overflow
 panics in debug and wraps in release. Always benchmark with `--release`.
 

@@ -196,7 +196,7 @@ converts into through `?`.
 The rule of thumb is **`thiserror` in libraries** (callers need to match on
 specific failures) and **`anyhow` in binaries** (you mostly report errors).
 The standard library's `Box<dyn std::error::Error + Send + Sync>` is the
-no-dependency version of `anyhow::Error`.
+[no-dependency]{.nobr} version of `anyhow::Error`.
 
 ## Panics
 
@@ -219,7 +219,7 @@ In Go, HTTP servers commonly `recover` panics per request. Rust web
 frameworks run each request as a task, and a panicking task is isolated by
 the runtime (Tokio catches it and reports it through the task's
 `JoinHandle`). Even so, panics are less common in Rust than in Go: there's
-no nil to dereference, and invalid states are often impossible to
+no nil to de&shy;refer&shy;ence, and invalid states are often impossible to
 construct.
 :::
 

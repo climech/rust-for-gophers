@@ -29,7 +29,7 @@
 @page chapter-start { @top-center { content: none; } }
 
 html { font-family: "Source Serif 4", serif; font-size: 9.4pt; line-height: 1.42; color: var(--ink); }
-body { margin: 0; hyphens: auto; text-align: left; }
+body { margin: 0; hyphens: auto; hyphenate-limit-chars: 7 3 3; text-align: left; }
 p { margin: 0 0 0.62em 0; orphans: 2; widows: 2; text-align: justify; }
 li { text-align: justify; }
 .nobr { white-space: nowrap; hyphens: none; }

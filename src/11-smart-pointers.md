@@ -12,7 +12,7 @@ chapter covers that toolbox and when to use each piece.
 | shared ownership, across threads       | `Arc<T>`                  |
 | to mutate through a shared reference, one thread | `Cell<T>`, `RefCell<T>` |
 | to mutate shared data across threads   | `Mutex<T>`, `RwLock<T>`, atomics |
-| one-time lazy initialisation           | `OnceCell`, `OnceLock`, `LazyLock` |
+| one-time lazy initialization           | `OnceCell`, `OnceLock`, `LazyLock` |
 | a non-owning back-reference            | `Weak<T>`                 |
 | to borrow or own, decided at runtime   | `Cow<'a, T>`              |
 
@@ -81,7 +81,7 @@ data without taking it.
 
 Some designs really do need to mutate data that is shared: a cache inside
 a `&self` method, a counter shared by callbacks, a graph node updated by
-its neighbours. **Interior mutability** types allow mutation through a
+its neighbors. **Interior mutability** types allow mutation through a
 shared reference by moving the aliasing check from compile time to runtime,
 or by making the operation atomic.
 
@@ -135,7 +135,7 @@ your code is full of `Rc<RefCell<…>>`, consider whether a design with
 clearer ownership would be simpler.
 :::
 
-### Lazy and one-time initialisation
+### Lazy and one-time initialization
 
 ```rust
 use std::sync::LazyLock;
@@ -226,7 +226,7 @@ fn normalize(s: &str) -> Cow<'_, str> {
 }
 ```
 
-`Cow<str>` dereferences to `&str`, so callers mostly don't care which one
+`Cow<str>` de&shy;refer&shy;ences to `&str`, so callers mostly don't care which one
 they got.
 
 ## `Deref` and deref coercion

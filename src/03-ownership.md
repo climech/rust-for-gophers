@@ -158,7 +158,7 @@ familiar, most of those clones turn into borrows (next chapter).
 ## Drop: deterministic destruction
 
 When an owner goes out of scope, Rust calls the value's destructor right
-away, deterministically, in reverse order of declaration. Types customise
+away, deterministically, in reverse order of declaration. Types customize
 this by implementing the `Drop` trait:
 
 ```rust
@@ -177,7 +177,7 @@ fn work() {
 ```
 
 This pattern is known as **RAII** (Resource Acquisition Is
-Initialisation). It's how Rust closes files, releases locks, closes
+Initialization). It's how Rust closes files, releases locks, closes
 sockets and commits or rolls back transactions. There's usually no need for
 a `defer`-like construct:
 

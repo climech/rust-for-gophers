@@ -186,7 +186,7 @@ this, and sometimes a `nil` check on the inner slice.
 ## Ownership and collections
 
 Moving a value into a collection transfers ownership. Iterating comes in
-three flavours, according to what you want to do with the elements:
+three flavors, according to what you want to do with the elements:
 
 ```rust
 for x in &v { }       // x: &T      — read (v.iter())

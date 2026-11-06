@@ -78,14 +78,14 @@ They look similar, but there are important differences:
 | constraints are interfaces/type sets  | bounds are traits                |
 | <code>~int &#124; ~float64</code> type sets | no union types; use a trait      |
 | no generic methods                    | generic methods are fine         |
-| GC-shape stenciling (partly boxed)    | full monomorphisation            |
+| GC-shape stenciling (partly boxed)    | full monomorphization            |
 | operators via `cmp.Ordered` etc.      | operators via traits (`Add`, `PartialOrd`) |
 | type inference: function args         | inference across the whole body  |
 
-**Monomorphisation** means the compiler generates a separate copy of
-`largest` for each concrete `T` it's used with, and optimises each copy as
+**Monomorphization** means the compiler generates a separate copy of
+`largest` for each concrete `T` it's used with, and optimizes each copy as
 if you'd written it by hand. Generic Rust code is therefore as fast as
-specialised code. You pay in compile time and binary size. Go's
+specialized code. You pay in compile time and binary size. Go's
 implementation shares one copy among all pointer types and passes a
 dictionary, which compiles faster but can be slower at runtime.
 
@@ -166,7 +166,7 @@ Go interface value.
 `Box<dyn Trait>` is the closest thing to a Go interface value, and the
 right tool when you need a heterogeneous collection or a plugin point
 chosen at runtime. Most Rust code uses generics by default and switches to
-`dyn` when it needs that runtime flexibility, or when monomorphisation would
+`dyn` when it needs that runtime flexibility, or when monomorphization would
 bloat the binary.
 :::
 
@@ -229,9 +229,9 @@ impl also covers `str` and `dyn Trait`.
 ## The standard traits you need to know
 
 Most of your types will `#[derive(...)]` a handful of these. A derive is
-compiler-generated boilerplate, field by field.
+[compiler-generated]{.nobr} boilerplate, field by field.
 
-| Trait              | Purpose                        | Go analogue             |
+| Trait              | Purpose                        | Go analog             |
 |--------------------|--------------------------------|-------------------------|
 | `Debug`            | `{:?}` formatting              | `%+v` (automatic in Go) |
 | `Display`          | `{}` formatting, user-facing   | `String() string`       |
