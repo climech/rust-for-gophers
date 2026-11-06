@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>$title$</title>
+<meta name="author" content="$author$">
+<meta name="description" content="$subtitle$">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section class="titlepage">
+  <div class="kicker">A book for Go developers</div>
+  <h1 class="booktitle">$title$</h1>
+  <div class="subtitle">$subtitle$</div>
+  <div class="bar"></div>
+  <div class="author">$author$</div>
+  <div class="edition">$date$</div>
+</section>
+$if(toc)$
+<nav id="TOC">
+$table-of-contents$
+</nav>
+$endif$
+$body$
+</body>
+</html>

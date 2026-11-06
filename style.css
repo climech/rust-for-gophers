@@ -1,0 +1,166 @@
+@import url("fonts/fonts-local.css");
+
+:root {
+  --ink: #1b1b1b;
+  --muted: #6b6b6b;
+  --rule: #d9d9d9;
+  --code-bg: #f6f6f4;
+  --accent: #b7410e; /* rust */
+  --go: #00788f;     /* go teal, darkened for print */
+}
+
+@page {
+  size: A5;
+  margin: 17mm 15mm 18mm 15mm;
+  @bottom-center {
+    content: counter(page);
+    font: 400 7.5pt "Inter";
+    color: var(--muted);
+  }
+  @top-center {
+    content: string(chapter);
+    font: 400 7pt "Inter";
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+}
+@page :blank { @top-center { content: none; } @bottom-center { content: none; } }
+@page front { @top-center { content: none; } @bottom-center { content: none; } }
+@page chapter-start { @top-center { content: none; } }
+
+html { font-family: "Source Serif 4", serif; font-size: 9.4pt; line-height: 1.42; color: var(--ink); }
+body { margin: 0; hyphens: auto; text-align: left; }
+p { margin: 0 0 0.62em 0; orphans: 2; widows: 2; text-align: justify; }
+li { text-align: justify; }
+.nobr { white-space: nowrap; hyphens: none; }
+
+/* ---------- title page ---------- */
+.titlepage { page: front; height: 170mm; display: flex; flex-direction: column; justify-content: center; }
+.titlepage .kicker { font: 500 8pt "Inter"; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4mm; }
+.titlepage h1.booktitle { font: 700 30pt/1.05 "Inter"; margin: 0; letter-spacing: -0.02em; string-set: none; border: none; padding: 0; break-before: auto; page: front; }
+.titlepage .subtitle { font: 400 12pt/1.35 "Source Serif 4"; color: var(--muted); margin-top: 5mm; max-width: 95mm; hyphens: manual; }
+.titlepage .bar { width: 18mm; height: 1.4mm; background: var(--accent); margin-top: 10mm; }
+.titlepage .author { font: 600 9.5pt "Inter"; color: var(--ink); margin-top: 6mm; }
+.titlepage .edition { font: 400 7.5pt "Inter"; color: var(--muted); margin-top: 4mm; }
+
+/* ---------- TOC ---------- */
+nav#TOC { page: front; break-after: page; break-before: page; }
+nav#TOC::before { content: "Contents"; display: block; font: 700 16pt "Inter"; margin: 0 0 6mm 0; }
+nav#TOC ul { list-style: none; padding: 0; margin: 0; }
+nav#TOC > ul > li { margin: 0 0 1.4mm 0; font: 600 8.4pt/1.35 "Inter"; }
+nav#TOC > ul > li > ul { margin: 0.6mm 0 2mm 0; }
+nav#TOC > ul > li > ul > li { font: 400 8pt/1.4 "Source Serif 4"; padding-left: 5mm; }
+nav#TOC > ul > li > ul > li > ul { display: none; }
+nav#TOC a { color: inherit; text-decoration: none; }
+nav#TOC a::after { content: leader(" ") target-counter(attr(href), page); color: var(--muted); font-feature-settings: "tnum"; }
+
+/* ---------- headings ---------- */
+h1, h2, h3, h4 { font-family: "Inter", sans-serif; color: var(--ink); hyphens: manual; break-after: avoid; }
+h1 {
+  page: chapter-start;
+  break-before: page;
+  string-set: chapter content();
+  font-size: 17pt; font-weight: 700; line-height: 1.15; letter-spacing: -0.015em;
+  margin: 14mm 0 8mm 0;
+  padding-top: 4mm;
+  border-top: 1.2mm solid var(--accent);
+  width: 100%;
+}
+h1 .header-section-number { display: block; font-size: 8pt; font-weight: 500; letter-spacing: 0.14em; color: var(--muted); margin-bottom: 2mm; }
+h1 .header-section-number::before { content: "CHAPTER "; }
+h1.unnumbered .header-section-number { display: none; }
+h2 { font-size: 11pt; font-weight: 700; margin: 1.5em 0 0.5em 0; line-height: 1.25; }
+h2 .header-section-number { color: var(--accent); margin-right: 0.45em; font-weight: 600; }
+h3 { font-size: 9.2pt; font-weight: 600; margin: 1.25em 0 0.35em 0; }
+h3 .header-section-number { display: none; }
+h4 { font-size: 8.8pt; font-weight: 600; font-style: italic; margin: 1em 0 0.3em 0; }
+
+/* Appendix chapters */
+h1.appendix .header-section-number::before { content: "APPENDIX "; }
+
+/* ---------- inline ---------- */
+a { color: inherit; text-decoration: none; }
+strong { font-weight: 600; }
+code, pre { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
+code { font-family: "Iosevka", monospace; font-size: 0.92em; hyphens: none; }
+p code, li code, td code, dd code { background: var(--code-bg); padding: 0.05em 0.22em; border-radius: 2px; }
+h1 code, h2 code, h3 code { background: none; font-size: 0.9em; }
+
+/* ---------- lists ---------- */
+ul, ol { margin: 0 0 0.65em 0; padding-left: 1.25em; }
+li { margin: 0.15em 0; }
+li > p { margin: 0 0 0.3em 0; }
+dl { margin: 0 0 0.7em 0; }
+dt { font-weight: 600; }
+dd { margin: 0 0 0.4em 1.2em; }
+
+/* ---------- code blocks ---------- */
+div.sourceCode, pre { position: relative; margin: 0.45em 0 0.85em 0; }
+pre {
+  font-family: "Iosevka", monospace;
+  font-size: 8.1pt; line-height: 1.36;
+  background: var(--code-bg);
+  border-left: 0.7mm solid #cfcfcf;
+  padding: 2.2mm 3mm 2.2mm 3mm;
+  white-space: pre-wrap; overflow-wrap: anywhere; hyphens: none;
+  break-inside: auto;
+  orphans: 3; widows: 3;
+}
+pre code { font-size: 1em; background: none; padding: 0; }
+pre.rust { border-left-color: var(--accent); }
+pre.go   { border-left-color: var(--go); }
+pre.rust::before, pre.go::before, pre.toml::before, pre.sh::before, pre.text::before {
+  position: absolute; top: 1.2mm; right: 2mm;
+  font: 600 5.6pt "Inter"; letter-spacing: 0.1em; text-transform: uppercase;
+}
+pre.rust::before { content: "Rust"; color: var(--accent); }
+pre.go::before   { content: "Go"; color: var(--go); }
+pre.toml::before { content: "toml"; color: var(--muted); }
+pre.sh::before   { content: "shell"; color: var(--muted); }
+pre.text::before { content: "output"; color: var(--muted); }
+pre.sh, pre.text, pre.toml { border-left-color: #bdbdbd; }
+
+/* syntax colours: restrained */
+code span.kw, code span.cf { color: #7a2e8a; }          /* keywords, control flow */
+code span.dt { color: #1c5e8c; }                       /* types */
+code span.st, code span.ch, code span.ss, code span.vs { color: #2f6b2f; } /* strings */
+code span.dv, code span.bn, code span.fl, code span.cn { color: #9a5b00; } /* numbers/consts */
+code span.co, code span.do, code span.an, code span.cv, code span.in { color: #8a8a8a; font-style: italic; }
+code span.fu { color: #1b1b1b; }
+code span.pp, code span.at { color: #8c4a1c; }          /* attributes, macros */
+code span.op { color: #444; }
+code span.er, code span.al { color: #b00020; }
+code span.im { color: #7a2e8a; }
+
+/* ---------- callouts ---------- */
+div.go, div.note, div.warn, div.key {
+  margin: 0.8em 0 1em 0; padding: 2.4mm 3.2mm 1mm 3.2mm;
+  border: 0.25mm solid var(--rule); border-radius: 1.2mm;
+  font-size: 0.93em; break-inside: avoid;
+}
+div.go::before, div.note::before, div.warn::before, div.key::before {
+  display: block; font: 700 6.4pt "Inter"; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.2mm;
+}
+div.go   { border-left: 1mm solid var(--go); }
+div.go::before   { content: "Coming from Go"; color: var(--go); }
+div.note::before { content: "Note"; color: var(--muted); }
+div.warn { border-left: 1mm solid var(--accent); }
+div.warn::before { content: "Watch out"; color: var(--accent); }
+div.key  { border-left: 1mm solid var(--ink); background: #fafafa; }
+div.key::before  { content: "Key idea"; color: var(--ink); }
+div.go pre, div.note pre, div.warn pre, div.key pre { margin: 0.4em 0 0.7em 0; }
+
+/* ---------- tables ---------- */
+table { border-collapse: collapse; width: 100%; margin: 0.6em 0 1em 0; font-size: 0.86em; line-height: 1.32; break-inside: auto; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { font: 600 0.92em "Inter"; text-align: left; border-bottom: 0.35mm solid var(--ink); padding: 1.1mm 1.5mm; }
+td { border-bottom: 0.2mm solid var(--rule); padding: 1mm 1.5mm; vertical-align: top; }
+td code { font-size: 0.86em; }
+table caption { caption-side: bottom; font-size: 0.85em; color: var(--muted); text-align: left; padding-top: 1mm; }
+
+blockquote { margin: 0.8em 0; padding-left: 4mm; border-left: 0.5mm solid var(--rule); color: #444; font-style: italic; }
+hr { border: none; border-top: 0.25mm solid var(--rule); margin: 1.2em 0; }
+figure { margin: 0.8em 0; break-inside: avoid; }
+.diagram pre { background: none; border: 0.25mm dashed var(--rule); }
+.diagram pre::before { content: none; }
